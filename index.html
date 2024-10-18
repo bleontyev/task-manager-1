@@ -1,0 +1,74 @@
+<!-- 
+  Vue.js. Сделал два createApp для двух разных элементов div.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>JavaScript</title>
+    <!-- Работал этот вариант подключения. -->
+    <script src="./vue/vue.global.js"></script>     
+
+    <script defer type="text/javascript" src="./js/script.js"></script>     
+    <!-- <script defer type="text/javascript" src="./js/script.js"></script>      -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+
+  <!-- Эксперимент с этим способом подключения через CDN. -->
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+  <div id="app">{{ message }}
+    <br>
+    {{ counter }}
+    <br>
+    <button v-on:click = "increaseCounter">+</button>
+    <button v-on:click = "decreaseCounter">-</button>          
+  </div>
+
+  <div id="app_1">{{ message }}
+    <br>
+    {{ counter }}
+    <br>
+    <button v-on:click = "increaseCounter">+</button>
+    <button v-on:click = "decreaseCounter">-</button>          
+  </div>
+
+  <!-- <script>
+    const { createApp, ref } = Vue
+  
+    createApp({
+      setup() {
+        const message = ref('Hello vue!')
+        return {
+          message
+        }
+      }
+    }).mount('#app')
+  </script> -->
+  
+<script>
+  // const { createApp, ref } = Vue
+const Counter = {
+  data() {
+    return {
+      counter: 0,
+      message: "ASDasdASD",
+    }
+  },
+  methods: {
+    increaseCounter(){
+      this.counter++ ;
+    },
+    decreaseCounter(){
+      this.counter-- ;
+    },     
+  }
+}
+Vue.createApp(Counter).mount('#app');
+Vue.createApp(Counter).mount('#app_1');
+</script>
+
+</body>
+</html>
